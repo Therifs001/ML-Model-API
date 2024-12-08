@@ -1,0 +1,26 @@
+{
+  "name": "cornlab",
+  "version": "1.0.0",
+  "description": "Corn disease detection model using TensorFlow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon ./src/server/server.js",
+    "start": "node ./src/server/server.js",
+    "debug": "node --inspect ./src/server/server.js"
+  },
+  "keywords": [],
+  "author": "Your Name <your-email@example.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/firestore": "^7.11.0",
+    "@hapi/hapi": "^21.3.12",
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "engines": {
+    "node": ">=16.0.0 <18.0.0"
+  }
+}
