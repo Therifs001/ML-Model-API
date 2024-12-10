@@ -3,8 +3,8 @@ const { Firestore } = require('@google-cloud/firestore');
 async function storeData(id, data) {
   const db = new Firestore();
  
-  const predictCollection = db.collection('prediction');
-  return predictCollection.doc(id).set(data);
+  const collection = db.collection('corn_disease_predictions');
+    await collection.doc(id).set(data);
 }
  
 module.exports = storeData;
