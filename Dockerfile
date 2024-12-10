@@ -1,20 +1,23 @@
-# Gunakan Node.js versi 16, karena aplikasi membutuhkan versi >=16 <18
-FROM node:16
+# Use the official Node.js image as the base image
+FROM node:16-slim
 
-# Tentukan working directory di dalam container
-WORKDIR /usr/src/app
+# Set the working directory in the container
+WORKDIR /app
 
-# Salin file package.json dan package-lock.json (jika ada)
+# Copy package.json and package-lock.json first to leverage Docker's cache
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Salin seluruh kode sumber ke dalam container
+# Copy the rest of the application code
 COPY . .
 
-# Ekspos port yang digunakan oleh aplikasi (sesuai dengan konfigurasi Hapi.js, biasanya 8080)
+# Expose port 8080 (required by Cloud Run)
 EXPOSE 8080
 
-# Tentukan command untuk menjalankan aplikasi
-CMD ["npm", "start"]
+# Set environment variable to indicate whether it's in production or development
+ENV NODE_ENV=production
+
+# Use start:dev for development and start for production
+CMD ["npm", "run", "start"]
