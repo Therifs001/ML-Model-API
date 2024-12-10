@@ -20,4 +20,8 @@ EXPOSE 8080
 ENV NODE_ENV=production
 
 # Use start:dev for development and start for production
+<<<<<<< HEAD
 CMD ["npm", "run", "start"]
+=======
+CMD ["npm", "run", "start"]
+>>>>>>> 782667ee54b3a9a3c3cdcc8521bcc262fc961a59
