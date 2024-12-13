@@ -2,7 +2,10 @@ const predictClassification = require('../services/inferenceService');
 const crypto = require('crypto');
 const storeData = require('../services/storeData');
 
+<<<<<<< HEAD
 // Fungsi untuk menangani permintaan prediksi
+=======
+>>>>>>> a358005300816fd1021b9613893ce63002d90a59
 async function postPredictHandler(request, h) {
     // Ekstrak payload dan model dari request
     const { image } = request.payload;
@@ -25,6 +28,7 @@ async function postPredictHandler(request, h) {
         createdAt,
     };
 
+<<<<<<< HEAD
     await storeData(id, data);
     return h
       .response({
@@ -51,3 +55,22 @@ async function postPredictHandler(request, h) {
   
   export default { postPredict, getPredictHistories };
   
+=======
+    // Simpan data hasil prediksi
+    await storeData(id, data);
+
+    // Respon sukses
+    const response = h.response({
+        status: 'success',
+        message:
+            confidenceScore > 99
+                ? 'Model is predicted successfully.'
+                : 'Model is predicted successfully but under threshold. Please use the correct picture',
+        data,
+    });
+    response.code(201);
+    return response;
+}
+
+module.exports = postPredictHandler;
+>>>>>>> a358005300816fd1021b9613893ce63002d90a59
