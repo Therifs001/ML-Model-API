@@ -9,7 +9,7 @@ const InputError = require('../exceptions/InputError');
 // Menjalankan server secara asinkron
 (async () => {
     const server = Hapi.server({
-      port: 3001,
+      port: 8080,
       host: '0.0.0.0',
       routes: {
         cors: {
